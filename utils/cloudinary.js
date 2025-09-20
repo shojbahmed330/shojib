@@ -1,5 +1,4 @@
 const cloudinary = require('cloudinary').v2;
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const multer = require('multer');
 const path = require('path');
 const { logger } = require('./logger');
@@ -37,19 +36,8 @@ class CloudinaryManager {
       this.configure();
     }
 
-    const defaultOptions = {
-      cloudinary: cloudinary,
-      params: {
-        folder: 'voice-social',
-        allowed_formats: ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'mov', 'avi', 'mp3', 'wav'],
-        resource_type: 'auto',
-        unique_filename: true,
-        use_filename: false
-      }
-    };
-
-    const storageOptions = { ...defaultOptions, ...options };
-    this.storage = new CloudinaryStorage(storageOptions);
+    // Use memory storage with custom filename
+    this.storage = multer.memoryStorage();
     
     return this.storage;
   }

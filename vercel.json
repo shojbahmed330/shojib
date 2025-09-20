@@ -1,11 +1,10 @@
 {
   "version": 2,
   "name": "voice-social",
-  "framework": "vite",
-  "buildCommand": "cd client && npm run build",
+  "framework": null,
+  "buildCommand": "npm run vercel-build",
   "outputDirectory": "client/build",
-  "installCommand": "npm install && cd client && npm install",
-  "devCommand": "npm run dev",
+  "installCommand": "echo 'Using custom build script'",
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -25,7 +24,10 @@
     }
   ],
   "env": {
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "NPM_CONFIG_LEGACY_PEER_DEPS": "true",
+    "NPM_CONFIG_FUND": "false",
+    "NPM_CONFIG_AUDIT": "false"
   },
   "functions": {
     "api/serverless.js": {
