@@ -25,9 +25,7 @@
   ],
   "env": {
     "NODE_ENV": "production",
-    "NPM_CONFIG_LEGACY_PEER_DEPS": "true",
-    "NPM_CONFIG_FUND": "false",
-    "NPM_CONFIG_AUDIT": "false"
+    "NPM_CONFIG_LEGACY_PEER_DEPS": "true"
   },
   "functions": {
     "api/serverless.js": {
