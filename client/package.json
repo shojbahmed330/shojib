@@ -42,7 +42,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "preinstall": "rm -rf node_modules package-lock.json .npm && npm cache clean --force",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
