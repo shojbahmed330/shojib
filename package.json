@@ -7,7 +7,7 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "build": "cd client && npm run build",
-    "vercel-build": "npm i --force && cd client && npm i --force && npm run build",
+    "vercel-build": "npm install --legacy-peer-deps && cd client && npm install --legacy-peer-deps && npm run build",
     "clean-install": "rm -rf node_modules package-lock.json client/node_modules client/package-lock.json && npm install --legacy-peer-deps && cd client && npm install --legacy-peer-deps",
     "install:all": "npm install --legacy-peer-deps && cd client && npm install --legacy-peer-deps",
     "test": "jest",
