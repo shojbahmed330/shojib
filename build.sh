@@ -1,18 +1,24 @@
 #!/bin/bash
+set -e
 
-echo "🧹 Cleaning all caches and dependencies..."
-rm -rf node_modules client/node_modules package-lock.json client/package-lock.json .npm
-npm cache clean --force
+echo "🚀 Starting Voice Social build..."
 
-echo "📦 Installing root dependencies with force..."
-npm install --force --no-audit --no-fund
+echo "📦 Installing root dependencies..."
+npm install --force --no-audit --no-fund --prefer-offline
 
-echo "📦 Installing client dependencies with force..."
+echo "📂 Moving to client directory..."
 cd client
-npm cache clean --force
-npm install --force --no-audit --no-fund
 
-echo "🔨 Building React client..."
+echo "📦 Installing client dependencies..."
+npm install --force --no-audit --no-fund --prefer-offline
+
+echo "🔍 Checking react-scripts..."
+if ! command -v ./node_modules/.bin/react-scripts &> /dev/null; then
+    echo "❌ react-scripts not found, installing again..."
+    npm install react-scripts --force
+fi
+
+echo "🔨 Building React app..."
 npm run build
 
 echo "✅ Build completed successfully!"
